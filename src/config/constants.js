@@ -1,0 +1,88 @@
+export const cards = [
+  {
+    key: "ace-club",
+    name: "Ace Clube",
+    image: "images/clubs/ace-club-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "king-club",
+    name: "King Clube",
+    image: "images/clubs/king-club-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "queen-club",
+    name: "Queen Clube",
+    image: "images/clubs/queen-club-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "jack-club",
+    name: "Jack Clube",
+    image: "images/clubs/jack-club-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "king-diamond",
+    name: "King Diamond",
+    image: "images/diamonds/king-diamond-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "jack-diamond",
+    name: "Jack Diamond",
+    image: "images/diamonds/jack-diamond-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "ace-heart",
+    name: "Ace Heart",
+    image: "images/hearts/ace-heart-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "king-heart",
+    name: "King Heart",
+    image: "images/hearts/king-heart-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "queen-heart",
+    name: "Queen Heart",
+    image: "images/hearts/queen-heart-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "ace-spade",
+    name: "Ace Spade",
+    image: "images/spades/ace-spade-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "king-spade",
+    name: "King Spade",
+    image: "images/spades/king-spade-card.png",
+    visible: false,
+    disabled: false,
+  },
+  {
+    key: "queen-spade",
+    name: "Queen Spade",
+    image: "images/spades/queen-spade-card.png",
+    visible: false,
+    disabled: false,
+  },
+];
+
+export const cardGames = [...cards, ...cards];
