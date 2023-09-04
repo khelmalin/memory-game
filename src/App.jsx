@@ -9,6 +9,7 @@ function App() {
   const [momoryGames, setMemoryGames] = useState(shuffle(cardGames));
   const [selected, setSelected] = useState(null);
   const [visible, setVisible] = useState(false);
+  const [shakeIndexs, setShakeIndexs] = useState([]);
 
   const isWon = momoryGames.find((memoryGame) => memoryGame.disabled === false)
     ? false
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <main className="container mx-auto">
+      <div className="flex flex-1 flex-col justify-center h-full min-h-screen">
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mt-10 mb-10 text-center">
         Memory Game
       </h1>
@@ -32,6 +34,8 @@ function App() {
               key={`card-indx-${index}`}
               imageUrl={image}
               visible={visible}
+              disabled={disabled}
+              incorrect={shakeIndexs.includes(index)}
               onClick={() => {
                 if (disabled) {
                   return false;
@@ -81,6 +85,8 @@ function App() {
                   setSelected(null);
                   setMemoryGames(clonedMomoryGames);
                 } else {
+                  setShakeIndexs([index, selected.index]);
+
                   setTimeout(() => {
                     clonedMomoryGames[index] = {
                       ...clonedMomoryGames[index],
@@ -94,6 +100,7 @@ function App() {
                     };
                     setSelected(null);
                     setMemoryGames(clonedMomoryGames);
+                    setShakeIndexs([]);
                   }, 500);
                 }
               }}
@@ -109,27 +116,31 @@ function App() {
           setMemoryGames(shuffle(cardGames));
         }}
       />
+      </div>
     </main>
   );
 }
 
-const Card = ({ visible = true, imageUrl = null, onClick = () => {} }) => {
+const Card = ({ visible = true, disabled = false, imageUrl = null, onClick = () => {}, incorrect = false }) => {
   if (!visible) {
     return (
       <div
         onClick={onClick}
-        className="block px-6 py-8 h-40 border not-prose rounded-lg border-gray-200 dark:border-gray-800 bg-slate-200 dark:bg-slate-800 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 group"
+        className="block px-6 py-8 w-full h-40 border-2 not-prose rounded-lg border-gray-200 dark:border-gray-800 bg-slate-200 dark:bg-slate-800 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 group"
       />
     );
   }
 
   return (
-    <img
-      className="block px-6 py-8 h-40 border not-prose border-gray-200 dark:border-gray-800 group bg-white p-2 rounded-lg"
-      src={imageUrl}
-      onClick={onClick}
-      alt=""
-    />
+    <div className="w-full h-40">
+      <img
+        className={`block px-6 py-8 w-full h-full object-contain border-2 not-prose border-gray-200 dark:border-gray-800 group bg-white p-2 rounded-lg ${incorrect ? 'animate-shake animate-once border-red-500 dark:border-red-500' : visible && !disabled ? 'border-blue-500 dark:border-blue-500' : ''}`}
+        src={imageUrl}
+        onClick={onClick}
+        alt=""
+      />
+    </div>
+
   );
 };
 

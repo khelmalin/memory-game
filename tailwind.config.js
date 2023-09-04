@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import animated from "tailwindcss-animated";
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -8,5 +10,5 @@ export default {
       gray: "cool",
     },
   },
-  plugins: [],
+  plugins: [animated],
 };
